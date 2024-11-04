@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}IIEST Shibpur - Indian Institute of Engineering Science and Technology{% endblock %}
+
+{% block content %}
+<div class="container flex-center  mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">Our Distinguished Alumni</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for alumnus in alumni %}
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105"
+             hx-get="{% url 'alumni_detail' alumnus.pk %}"
+             hx-trigger="click"
+             hx-target="#alumni-detail"
+             hx-swap="innerHTML">
+            <div class="p-6">
+                {% if alumnus.image %}
+                <div class="relative h-56 mb-6">
+                    <img src="{{ alumnus.image.url }}" 
+                         alt="{{ alumnus.name }}" 
+                         class="w-full h-full object-cover rounded-lg shadow-md">
+                </div>
+                {% else %}
+                <div class="relative h-56 mb-6">
+                    <img src="{% static '/images/empty.jpg' %}" 
+                         alt="{{ alumnus.name }}" 
+                         class="w-full h-full object-cover rounded-lg shadow-md">
+                </div>
+                {% endif %}
+                
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-semibold text-gray-800 hover:text-blue-600 transition">
+                        {{ alumnus.name }}
+                    </h2>
+                    
+                    <div class="space-y-2">
+                        <p class="text-lg text-gray-700">{{ alumnus.degree }}</p>
+                        <p class="text-gray-600">Class of {{ alumnus.graduation_year }}</p>
+                    </div>
+                    
+                    <div class="pt-4 border-t border-gray-200">
+                        {% if alumnus.current_company %}
+                        <div class="mb-3">
+                            <p class="text-blue-600 font-medium">{{ alumnus.current_company }}</p>
+                            <p class="text-gray-600 italic">{{ alumnus.position }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="flex items-center space-x-4 mt-4">
+                            <a href="mailto:{{ alumnus.email }}" 
+                               class="text-gray-600 hover:text-blue-600 transition flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                                Email
+                            </a>
+                            <a href="{{ alumnus.linkedin_profile }}" 
+                               class="text-gray-600 hover:text-blue-600 transition flex items-center"
+                               target="_blank" 
+                               rel="noopener noreferrer">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="alumni-detail" class="mt-8"></div>
+{% endblock %}

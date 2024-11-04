@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <div class="flex flex-col space-y-4 mb-6">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-gray-800">Alumni Network</h1>
+            <a href="{% url 'alumni_create' %}" 
+               class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" id="add-btn">
+                Add New Alumni
+            </a>
+        </div>
+        
+        <!-- Search Form -->
+        <form method="GET" action="{% url 'alumni_search' %}" class="flex gap-2">
+            <input type="text" 
+                   name="q" 
+                   placeholder="Search alumni..." 
+                   value="{{ request.GET.q }}"
+                   class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <button type="submit" 
+                    class="bg-gray-100 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                Search
+            </button>
+        </form>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for member in alumni %}
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="p-4">
+                {% if member.image %}
+                <img src="{{ member.image.url }}" 
+                     alt="{{ member.name }}" 
+                     class="w-full h-48 object-cover rounded-lg mb-4">
+                {% else %}
+                <img src="{% static '/images/empty.jpg' %}" 
+                    alt="{{ member.name }}" 
+                    class="w-full h-48 object-cover rounded-lg mb-4">
+                {% endif %}
+                <h2 class="text-xl font-semibold text-gray-800">{{ member.name }}</h2>
+                <p class="text-gray-600">{{ member.graduation_year }}</p>
+                <p class="text-blue-600">{{ member.current_company }}</p>
+                
+                <!-- Action Buttons -->
+                <div class="mt-4 flex justify-end space-x-2">
+                    <button hx-get="{% url 'alumni_detail' member.pk %}"
+                            hx-target="#alumni-detail"
+                            hx-swap="innerHTML"
+                            class="text-blue-600 hover:text-blue-800">
+                        View
+                    </button>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'alumni_edit' member.pk %}" 
+                       class="text-yellow-600 hover:text-yellow-800">
+                        Edit
+                    </a>
+                    <button onclick="openModal('{{ member.pk }}')"
+                            class="text-red-600 hover:text-red-800">
+                        Delete
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id="alumni-detail" class="mt-8"></div>
+    <div id="deleteModal" class="fixed inset-0 hidden bg-gray-800 bg-opacity-75 flex items-center justify-center">
+        <div id="modalContent" class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            <!-- Content from confirm_delete.html will be loaded here -->
+        </div>
+    </div>
+</div>
+<script>
+    function openModal(memberId) {
+        // Using Django URL syntax to dynamically insert the correct URL
+        const url = `{% url 'alumni_delete' 0 %}`.replace('/0/', `/${memberId}/`);
+        
+        fetch(url)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('modalContent').innerHTML = html;
+                document.getElementById('deleteModal').classList.remove('hidden');
+            });
+    }
+
+    function closeModal() {
+        document.getElementById('deleteModal').classList.add('hidden');
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!-- Faculty Detail Template -->
+{% load static %}
+<div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl">
+    <div class="p-8">
+        <!-- Header Section -->
+        <div class="flex justify-between items-start space-x-6">
+            <div class="flex-1">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">{{ faculty.name }}</h2>
+                <p class="text-lg text-gray-600 mb-1">{{ faculty.designation }}</p>
+                <p class="text-md text-gray-500">{{ faculty.department }}</p>
+            </div>
+            {% if faculty.image %}
+            <div class="flex-shrink-0">
+                <img src="{{ faculty.image.url }}" alt="{{ faculty.name }}" 
+                     class="w-32 h-32 object-cover rounded-lg shadow-md"/>
+            </div>
+            {% else %}
+            <div class="flex-shrink-0">
+                <img src="{% static '/images/empty.jpg' %}" alt="{{ faculty.name }}" 
+                     class="w-32 h-32 object-cover rounded-lg shadow-md"/>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Biography -->
+        <div class="mt-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+                Biography
+            </h3>
+            <p class="text-gray-700 leading-relaxed">
+                {{ faculty.bio }}
+            </p>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="mt-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+                Contact Information
+            </h3>
+            <div class="space-y-2">
+                <p class="text-gray-700">
+                    <span class="font-medium">Email:</span> {{ faculty.email }}
+                </p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Joined:</span> {{ faculty.joining_date }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

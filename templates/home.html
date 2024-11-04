@@ -1,0 +1,306 @@
+{% extends 'base.html' %}
+
+{% block title %}IIEST Shibpur - Indian Institute of Engineering Science and Technology{% endblock %}
+
+{% block content %}
+<div class="space-y-8" id="home">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-12 px-4 rounded-lg shadow-lg" id="hero-section">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl font-bold mb-4">Indian Institute of Engineering Science and Technology, Shibpur</h1>
+            <p class="text-xl mb-4">(Formerly Bengal Engineering College)</p>
+            <p class="text-lg">A University of National Importance under Ministry of Education, Government of India</p>
+        </div>
+    </div>
+
+    <!-- News and Announcements -->
+    <div class="grid md:grid-cols-3 gap-8" id="content">
+        <!-- Latest News -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-blue-900 mb-4 border-b pb-2">Latest News</h2>
+            <ul id="news-list" class="space-y-3">
+                <li class="flex items-start">
+                    <span class="text-red-600 font-bold mr-2">NEW</span>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Admission Notice for M.Tech Programs 2024-25</a>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-red-600 font-bold mr-2">NEW</span>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Ph.D. Admission Notice for Autumn Semester 2024</a>
+                </li>
+                <li>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">TEQIP Phase III Implementation</a>
+                </li>
+            </ul>
+            <a href="#" class="mt-4 inline-block text-blue-600 hover:text-blue-800">View All News →</a>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-blue-900 mb-4 border-b pb-2">Quick Links</h2>
+            <ul id="quick-links" class="space-y-3">
+                <li>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Academic Calendar</a>
+                </li>
+                <li>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Central Library</a>
+                </li>
+                <li>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Scholarship Portal</a>
+                </li>
+                <li>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Training & Placement Cell</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Events -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-blue-900 mb-4 border-b pb-2">Upcoming Events</h2>
+            <ul id="events-list" class="space-y-3">
+                <li class="flex items-start">
+                    <span class="text-green-600 font-bold mr-2">APR 15</span>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">National Conference on Advanced Materials</a>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-600 font-bold mr-2">APR 20</span>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">Workshop on AI and Machine Learning</a>
+                </li>
+            </ul>
+            <a href="#" class="mt-4 inline-block text-blue-600 hover:text-blue-800">View All Events →</a>
+        </div>
+    </div>
+
+    <!-- Featured Sections -->
+    <div class="grid md:grid-cols-2 gap-8" id="featured-sections">
+        <!-- Research Highlights -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-blue-900 mb-4">Research Excellence</h2>
+            <p class="text-gray-600 mb-4">Pioneering research across multiple disciplines including Advanced Materials, Artificial Intelligence, Renewable Energy, and more.</p>
+            <a href="#" 
+               class="inline-block bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition-colors">
+                Explore Research
+            </a>
+        </div>
+
+        <!-- Academic Programs -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-blue-900 mb-4">Academic Programs</h2>
+            <p class="text-gray-600 mb-4">Offering B.Tech, M.Tech, MSc, MBA, and Ph.D. programs across various engineering and science disciplines.</p>
+            <a href="#" 
+               class="inline-block bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition-colors">
+                View Programs
+            </a>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="bg-gray-100 rounded-lg p-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+                <div class="text-3xl font-bold text-blue-900">15</div>
+                <div class="text-gray-600">Departments</div>
+            </div>
+            <div>
+                <div class="text-3xl font-bold text-blue-900">200+</div>
+                <div class="text-gray-600">Faculty Members</div>
+            </div>
+            <div>
+                <div class="text-3xl font-bold text-blue-900">5000+</div>
+                <div class="text-gray-600">Students</div>
+            </div>
+            <div>
+                <div class="text-3xl font-bold text-blue-900">50000+</div>
+                <div class="text-gray-600">Alumni Network</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+// Function to generate random dates in the future
+function getRandomDate() {
+    const startDate = new Date();
+    const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 6, startDate.getDate());
+    const randomDate = new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
+    return randomDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+}
+
+// Function to generate random announcements
+function populateNews() {
+    const newsItems = [
+    'Admission Notice for M.Tech Programs 2024-25',
+    'Ph.D. Admission Notice for Autumn Semester 2024',
+    'TEQIP Phase III Implementation',
+    'Internship Program for Undergraduate Students',
+    'National Symposium on Renewable Energy',
+    'New Research Grant for Environmental Studies',
+    'Workshop on AI and Machine Learning',
+    'Guest Lecture Series on Data Science',
+    'Applications Open for Summer Internships 2024',
+    'Faculty Recruitment for 2024-25',
+    'MoU Signed with XYZ University',
+    'Annual Alumni Meet Scheduled for December',
+    'New Library Resources Available',
+    'Seminar on Climate Change and Sustainability',
+    'Scholarship Program for Meritorious Students',
+    'University Ranked in Top 100 Globally',
+    'Research Project on Robotics Funded by ABC Corp',
+    'Workshop on Cloud Computing and Security',
+    'Student Exchange Program with DEF University',
+    'Annual Sports Meet Coming Soon',
+    'Online Workshop on Quantum Computing',
+    'Campus Recruitment Drive for Final Year Students',
+    'National Conference on Biomedical Engineering',
+    'Virtual Open Day for Prospective Students',
+    'University Celebrates 50th Anniversary',
+    'New Partnerships in Renewable Energy Research',
+    'Webinar on Cybersecurity and Digital Forensics',
+    'Funding Opportunities for Research Scholars',
+    'Cultural Fest Scheduled for March',
+    'Online Course on Blockchain Technology Launched',
+    'New Student Dormitory Inaugurated',
+    'International Conference on Machine Learning',
+    'Entrepreneurship Bootcamp for Startups',
+    'University Launches New Engineering Programs',
+    'AI-Based Health Monitoring System Developed',
+    'Free Workshops on Creative Writing',
+    'New Fitness Center Opens on Campus',
+    'Funding Approved for Space Research Project',
+    'Launch of Virtual Reality Lab',
+    'Student-Led Social Impact Projects Launched',
+    'Coding Bootcamp for Beginners Starting Soon',
+    'New Collaboration with Tech Giants for Research',
+    'Department of Psychology Celebrates 20 Years',
+    'Scholarships for Women in STEM Announced',
+    'Annual Literature Festival Announced',
+    'Renewable Energy Lab Open for Research',
+    'Partnership with Industry Leaders for Placements',
+    'New Food Court Opens on Campus',
+    'Conference on Artificial Intelligence Trends',
+    'Research Lab Upgraded with Advanced Equipment',
+    'New Online Portal for Student Services',
+    'Webinar on Sustainable Agriculture Practices',
+    'University Innovation Hub Inaugurated',
+    'Guest Lecture on Renewable Energy Sources',
+    'Certificate Program in Digital Marketing Launched',
+    'University Enters Global Partnership Network',
+    'Faculty Development Program on Data Analytics',
+    'New B.Tech Program in Data Science Launched',
+    'Virtual Tour of Campus Available',
+    'University Receives Grant for Biodiversity Study',
+    'Orientation Program for New Students',
+    'Eco-Friendly Initiatives on Campus',
+    'Special Workshop on Women in Technology',
+    'Student Counselling Services Enhanced',
+    'New Health and Wellness Programs Announced',
+    'Green Campus Initiative Launched',
+    'Workshop on Emotional Intelligence',
+    'MoU with Local Government for Skill Development',
+    'Student Art Exhibition Opens Next Month',
+    'National Award for University Innovation Team',
+    'Entrepreneurship Talks Series Kicks Off',
+    'Free Online Courses in AI and ML for Students',
+    'University Hosts National Quiz Competition',
+    'New Research Center for Social Sciences',
+    'Library Introduces E-Resources for Students',
+    'Talk on Future of Renewable Energy',
+    'Annual Research Symposium Announced',
+    'Program on Financial Literacy for Students',
+    'University Wins Award for Innovation in Education',
+    'Online Resource Portal for Remote Learning',
+    'Mental Health Awareness Campaign Launched',
+    'New Scholarships for International Students',
+    'Computer Science Department Ranked Top 50',
+    'Virtual Lab Sessions Available for Students',
+    'Research Opportunities for Undergraduates',
+    'Launch of Digital Classroom Initiative',
+    'University Introduces Hybrid Learning Options',
+    'AI-Based Virtual Assistant for Student Support',
+    'Series of Webinars on Digital Transformation',
+    'Celebration of World Environment Day',
+    'Online Forum for Research Scholars',
+    'University Introduces Peer Mentorship Program',
+    'Career Counselling Services Expanded',
+    'Lecture Series on Climate Action',
+    'Open Call for Student Volunteers',
+    'University Launches Coding Club for Freshers',
+    'Online Internship Program for Remote Work Skills',
+    'New Student Loan Scheme Launched',
+    'Workshop on Startups and Entrepreneurship',
+    'Campus Tree Plantation Drive Announced',
+    'University Newsletter - Latest Edition Released',
+    'Training Program for Teachers on E-Learning',
+    'International Seminar on Cyber Security',
+    'University Acquires State-of-the-Art Equipment',
+    'Student-Led Podcast Series Launched',
+    'Annual Science Fair Scheduled for April',
+    'New Cafeteria Opens in West Campus'
+];
+    // Shuffle the newsItems array
+    const shuffledNews = newsItems.sort(() => 0.5 - Math.random());
+
+    // Get the first 5 items from the shuffled array
+    const selectedNews = shuffledNews.slice(0, 5);
+
+    const newsContainer = document.querySelector('#news-list');
+    newsContainer.innerHTML = '';  // Clear any existing content
+
+    selectedNews.forEach(news => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('flex', 'items-start');
+        listItem.innerHTML = `<span class="text-red-600 font-bold mr-2">NEW</span>
+                              <a href="#" class="text-gray-700 hover:text-blue-600">${news}</a>`;
+        newsContainer.appendChild(listItem);
+    });
+}
+
+// Function to generate random event titles and dates
+function populateEvents() {
+    const events = [
+        'National Conference on Advanced Materials',
+        'Workshop on AI and Machine Learning',
+        'Seminar on Quantum Computing',
+        'Webinar on Cloud Security',
+    ];
+    const eventsContainer = document.querySelector('#events-list');
+    eventsContainer.innerHTML = '';  // Clear any existing content
+
+    events.forEach(event => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('flex', 'items-start');
+        listItem.innerHTML = `<span class="text-green-600 font-bold mr-2">${getRandomDate()}</span>
+                              <a href="#" class="text-gray-700 hover:text-blue-600">${event}</a>`;
+        eventsContainer.appendChild(listItem);
+    });
+}
+
+// Function to generate random quick links
+function populateQuickLinks() {
+    const links = [
+        'Academic Calendar',
+        'Central Library',
+        'Scholarship Portal',
+        'Training & Placement Cell',
+        'Hostel Facilities',
+    ];
+    const linksContainer = document.querySelector('#quick-links');
+    linksContainer.innerHTML = '';  // Clear any existing content
+
+    links.forEach(link => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="#" class="text-gray-700 hover:text-blue-600">${link}</a>`;
+        linksContainer.appendChild(listItem);
+    });
+}
+
+// Function to initialize page content
+function initializeContent() {
+    populateNews();
+    populateEvents();
+    populateQuickLinks();
+}
+
+// Call initializeContent on page load
+document.addEventListener('DOMContentLoaded', initializeContent);
+
+</script>
+{% endblock %}
